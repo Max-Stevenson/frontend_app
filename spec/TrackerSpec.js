@@ -6,21 +6,23 @@ describe("Tracker", function() {
  	});
 
  	it("logged weight should start empty", function() {
-    expect(tracker.logged_weight).toEqual([]);
+    expect(tracker.weights).toEqual([]);
   });
 
   it("Should store date and weight", function(){
-  	var date = new Date;
+  	var date = new Date("01/01/2018");
   	var weight = 82
   	tracker.log_weight(date, weight);
-  	expect(tracker.logged_weight).toContain({date: weight})
+  	expect(tracker.dates).toContain(date)
+  	expect(tracker.weights).toContain(weight)
   });
 
-  it("User should can plot their weight over time", function() {
-  	var date = new Date;
-  	var weight = 82
-  	tracker.log_weight(date, weight);
-  	tracker.plot_weight();
-  	expect
-  })
+  it("Should be able to clear previous data", function() {
+    var date = new Date("01/01/2018");
+    var weight = 82
+    tracker.log_weight(date, weight);
+    tracker.clear_data();
+    expect(tracker.dates).toEqual([]);
+    expect(tracker.weights).toEqual([]);
+  });
 });

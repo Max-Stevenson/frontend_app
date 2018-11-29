@@ -1,7 +1,14 @@
 function Tracker() {
-	this.logged_weight = []
+	this.dates = []
+	this.weights = []
 }
 
 Tracker.prototype.log_weight = function(date, weight) {
-	this.logged_weight.push({date: weight})
+	this.dates.push(date);
+	this.weights.push(weight);
+};
+
+Tracker.prototype.clear_data = function() {
+	this.dates = [];
+	this.weights = [];
 };
